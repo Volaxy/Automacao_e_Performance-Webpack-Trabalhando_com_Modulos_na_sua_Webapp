@@ -35,3 +35,8 @@ URL do curso -> [Webpack - Trabalhando com Módulos na sua Webapp](https://curso
 * Minificação de arquivos CSS.
 * Como otimizar ainda mais módulos escritos em JavaScript.
 * Code splitting a lazy loading.
+
+## 05 - Webpack Dev Server &#x1F516;
+* Instalação do WebPaclk Dev Server.
+* Configuração do servidor.
+* Detalhes sobre o seu funcionamento que tornam o desenvolvedor mais produtivo.

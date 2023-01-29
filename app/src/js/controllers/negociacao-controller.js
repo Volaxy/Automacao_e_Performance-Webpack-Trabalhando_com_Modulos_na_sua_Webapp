@@ -33,7 +33,6 @@ export class NegociacaoController {
         this.atualizaView();
     }
     importaDados() {
-        // When a module is imported in the code, the webpack separates the code in a separated file
         import("../services/negociacoes-service.js")
             .then(modulo => {
                 const negociacoesService = new modulo.NegociacoesService();

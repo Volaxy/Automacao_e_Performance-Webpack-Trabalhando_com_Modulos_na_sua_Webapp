@@ -25,22 +25,28 @@ module.exports = {
         ]
     },
 
-    // When the webpack has the "optimization" configurations, he stop to apply your default optimization for the files, like the JS bundles
-    optimization: { // Configurations of optimization, like the "css-minimizer-webpack-plugin"
+    optimization: {
         minimize: true,
         minimizer: [
             new CssMinimizerWebpackPlugin(),
-            "...", // This tells webpack to apply the default minimization when the bundle is generated
+            "...",
         ],
     },
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./app/src/app.html",
-            filename: "app.html",
+            template: "./app/src/index.html",
+            filename: "index.html",
             hash: true,
         }),
-        new MiniCssExtractPlugin(), // Make the plugin available
-        new webpack.optimize.ModuleConcatenationPlugin(), // Apply more optimization for the bundle files
+        new MiniCssExtractPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin(),
     ],
+
+    devServer: {
+        static: path.resolve(__dirname, "dist"),
+        port: 3000,
+    },
 };
+
+// When the command "npm run start" runs, the webpack store the data in the memory of the PC
