@@ -1,5 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
     entry: "./app/src/js/app.js",
@@ -9,22 +12,35 @@ module.exports = {
         path: path.resolve(__dirname, "app/dist"),
         clean: true,
     },
-    module: { // Configures the modules, add the configurations to them
-        rules: [ // Defines the rules to the module
+
+    module: {
+        rules: [
             {
-                test: /\.css$/, // Regex that will be used to define which files will apply this rule
-                use: [ // If true, use the package name inside the "[]"
-                    "style-loader",
-                    "css-loader", // Extract the CSS inside the script and export to an <style> tag in the DOM page dynamically
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
                 ],
             }
         ]
     },
+
+    // When the webpack has the "optimization" configurations, he stop to apply your default optimization for the files, like the JS bundles
+    optimization: { // Configurations of optimization, like the "css-minimizer-webpack-plugin"
+        minimize: true,
+        minimizer: [
+            new CssMinimizerWebpackPlugin(),
+            "...", // This tells webpack to apply the default minimization when the bundle is generated
+        ],
+    },
+
     plugins: [
         new HtmlWebpackPlugin({
             template: "./app/src/app.html",
             filename: "app.html",
             hash: true,
         }),
+        new MiniCssExtractPlugin(), // Make the plugin available
+        new webpack.optimize.ModuleConcatenationPlugin(), // Apply more optimization for the bundle files
     ],
 };

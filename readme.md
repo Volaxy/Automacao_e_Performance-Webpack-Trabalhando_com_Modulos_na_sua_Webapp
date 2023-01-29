@@ -9,12 +9,6 @@ URL do curso -> [Webpack - Trabalhando com Módulos na sua Webapp](https://curso
 ## Links Úteis &#x1F517;
 * [Base Project](https://github.com/alura-cursos/webpack-alura-1/archive/a51df1d188a37ac83b7e5e6ab5ea435feb5bd0ad.zip) - Código base do projeto.
 
-## Siglas &#x1F5FA;
-*
-
-## Atalhos &#x2328;
-*
-
 ***
 
 ## 01 - Instação e Configuração Inicial &#x1F516;
@@ -33,3 +27,11 @@ URL do curso -> [Webpack - Trabalhando com Módulos na sua Webapp](https://curso
 * Tratando pacotes CSS como módulos.
 * Papel e configuração do css-loader.
 * Papel e configuração do style-loader.
+
+## 04 - Build de Produção e Boas Práticas &#x1F516;
+* Se devemos carregar o CSS no JS ou através da tag style.
+* Carregamento de css como módulo diretamente da pasta node_modules.
+* Como extrair arquivos CSS em seu próprio arquivo.
+* Minificação de arquivos CSS.
+* Como otimizar ainda mais módulos escritos em JavaScript.
+* Code splitting a lazy loading.
