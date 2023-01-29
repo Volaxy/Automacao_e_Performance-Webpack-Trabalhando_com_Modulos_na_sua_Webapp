@@ -7,13 +7,24 @@ module.exports = {
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "app/dist"),
-        clean: true // Clear the folder and creates again
+        clean: true,
+    },
+    module: { // Configures the modules, add the configurations to them
+        rules: [ // Defines the rules to the module
+            {
+                test: /\.css$/, // Regex that will be used to define which files will apply this rule
+                use: [ // If true, use the package name inside the "[]"
+                    "style-loader",
+                    "css-loader", // Extract the CSS inside the script and export to an <style> tag in the DOM page dynamically
+                ],
+            }
+        ]
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./app/src/app.html", // The template to the generated HTML to base
-            filename: "app.html", // File name to be generated
-            hash: true // Generates a new hash for each different file created by the webpack to identify the file in the cache, clearing the older "bundle" and replaces with the new file
-        })
-    ]
+            template: "./app/src/app.html",
+            filename: "app.html",
+            hash: true,
+        }),
+    ],
 };
