@@ -1,10 +1,19 @@
-const path = require("path"); // Library to manage directories path
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    entry: "./app/src/js/app.js", // Set the start file to will load
-    // When the Webpack build the files, the mode of the building generator is not seted of default
+    entry: "./app/src/js/app.js",
+
     output: {
-        filename: "bundle.js", // The name's file of the generated file
-        path: path.resolve(__dirname, "app/dist"), // Path of the generated file
-    }
+        filename: "bundle.js",
+        path: path.resolve(__dirname, "app/dist"),
+        clean: true // Clear the folder and creates again
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./app/src/app.html", // The template to the generated HTML to base
+            filename: "app.html", // File name to be generated
+            hash: true // Generates a new hash for each different file created by the webpack to identify the file in the cache, clearing the older "bundle" and replaces with the new file
+        })
+    ]
 };
